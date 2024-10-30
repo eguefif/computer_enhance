@@ -3,6 +3,7 @@ use crate::registers::Registers;
 pub struct Cpu {
     pub memory: [u8; 0xFFF],
     pub registers: Registers,
+    pub pc: u16,
 }
 
 impl Cpu {
@@ -10,18 +11,24 @@ impl Cpu {
         Cpu {
             memory: data,
             registers: Registers::new(),
+            pc: 0,
         }
     }
 
     pub fn run(&mut self) {
-        let mut count = 0;
         loop {
-            println!("byte {}: {:x} ", count, self.memory[count]);
-            count += 1;
-            if self.memory[count] == 0 {
+            let opcode: u16 = self.get_opcode();
+            println!("opcode {}: {:x} ", self.pc - 1, opcode);
+            if self.pc == 0xFFF || self.memory[self.pc as usize] == 0 {
                 break;
             }
         }
+    }
+
+    fn get_opcode(&mut self) -> u16 {
+        let position = self.pc as usize;
+        self.pc += 2;
+        (self.memory[position] as u16) << 8 | self.memory[position + 1] as u16
     }
 }
 
