@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::prelude::*;
 
 pub mod cpu;
+pub mod opcode;
 pub mod registers;
 
 fn main() {
