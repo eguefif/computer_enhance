@@ -1,0 +1,1 @@
+/Users/eguefif/lab/computer_enhance/homework/part1/x8086/target/debug/x8086: /Users/eguefif/lab/computer_enhance/homework/part1/x8086/src/cpu.rs /Users/eguefif/lab/computer_enhance/homework/part1/x8086/src/main.rs /Users/eguefif/lab/computer_enhance/homework/part1/x8086/src/registers.rs
